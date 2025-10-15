@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="smartCampos.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="pt">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../Content/css/style.css">
+    <script src="../Content/js/menu.js" defer></script>
+
+    <title>Smart Campos</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <form runat="server">
+        <div id="container-geral">
+            <div id="menu-logo">
+                <div id="logo">
+                    <img src="../Content/img/fotos/logo.png" alt="logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li class='<%= Request.Url.AbsolutePath.Equals(ResolveUrl("~/Home")) ? "active" : "" %>'>
+                            <a href="Home.aspx">
+                                <img src="../Content/img/icons/Home.png" alt="Home">HOME
+                            </a>
+                        </li>
+
+                        <li class='<%= Request.Url.AbsolutePath.Equals(ResolveUrl("~/Cadastro")) ? "active" : "" %>'>
+                            <a href="Cadastro.aspx">
+                                <img src="../Content/img/icons/Cadastro.png" alt="Cadastro">CADASTRO
+                            </a>
+                        </li>
+
+                        <li class='<%= Request.Url.AbsolutePath.Equals(ResolveUrl("~/Estoque")) ? "active" : "" %>'>
+                            <a href="Estoque.aspx">
+                                <img src="../Content/img/icons/Estoque.png" alt="Estoque">ESTOQUE
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

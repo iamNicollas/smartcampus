@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Karla', sans-serif;
+}
+
+/* Fundo */
+body {
+    background-color: #e7e2df;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Card */
+.login-card {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 60px 80px;  
+    width: 700px;         
+    text-align: center;
+}
+
+/* Título */
+h1 {
+    font-size: 30px;
+    color: #7A7979;
+    margin-bottom: 25px;
+    text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Inputs */
+form {
+    text-align: left;
+}
+
+label {
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #3b2f9b;
+    outline: none;
+}
+
+/* Esqueceu senha */
+.esqueceu {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    color: #3b2f9b;
+    text-decoration: none;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+/* Botão com ícone */
+.btn-login {
+    background-color: #3b2f9b;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 150px;
+    cursor: pointer;
+    transition: 0.1s;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-login:hover {
+    background-color: #2a2175;
+}
+
+/* Círculo do ícone */
+.btn-login .icone {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    color: #3b2f9b;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Texto de cadastro */
+.cadastro-texto {
+    font-size: 14px;
+    color: #333;
+    margin-top: 15px;
+}
+
+.cadastro-texto a {
+    color: #0077ff;
+    text-decoration: none;
+}
+
+.cadastro-texto a:hover {
+    text-decoration: underline;
+}
+
+/* Logar com */
+h2 {
+    margin-top: 25px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Ícones sociais */
+.icones-login {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.icones-login img {
+    width: 40px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.icones-login img:hover {
+    transform: scale(1.1);
+}
+

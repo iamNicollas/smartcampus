@@ -1,0 +1,9 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/smartCampus/config
+/bin
+/obj
+/packages/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1
+/.vs/smartCampus/FileContentIndex

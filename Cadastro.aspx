@@ -24,7 +24,7 @@
             <div id="right">
                 <label for="txtValor">
                     Valor da Unidade
-                    <asp:TextBox runat="server" ID="txtValor" placeholder="R$" required="required"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtValor" placeholder="R$ 0,00" required="required"></asp:TextBox>
                 </label>
                 <label for="txtDataValidade">
                     Data de Validade
@@ -81,6 +81,7 @@
         <div id="container-btn">
             <asp:Button ID="btnCancelar" OnClick="btnCancelar_Click" runat="server" Text="Cancelar" CssClass="btn-cancelar" />
             <asp:Button ID="btnCadastro" OnClick="btnCadastro_Click" runat="server" Text="Cadastrar" CssClass="btn-cadastrar" />
+            <asp:Button ID="btnEditar" OnClick="btnEditar_Click" runat="server" Text="Editar" CssClass="btn-cadastrar" />
         </div>
     </div>
 </asp:Content>

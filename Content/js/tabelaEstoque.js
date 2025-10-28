@@ -43,22 +43,10 @@ function inicializarEventosTabela() {
             });
         }
 
-        // Botão Editar
-        if (btnEditar) {
-            btnEditar.addEventListener("click", () => {
-                const idProduto = btnEditar.getAttribute("data-id");
-                console.log("Editar produto:", idProduto);
-                // Aqui você chama sua função de edição, por exemplo:
-                // trocarConteudo('cadastro');
-                // carregarCategorias().then(() => preencherFormularioEditar(idProduto));
-            });
-        }
-
         // Botão Excluir
         if (btnExcluir) {
             btnExcluir.addEventListener("click", () => {
-                const idProduto = btnExcluir.getAttribute("data-id");
-                mostrarModalConfirmacao(idProduto);
+                mostrarModalConfirmacao();
             });
         }
     });
@@ -84,27 +72,4 @@ function mostrarModalConfirmacao(idProduto) {
     document.getElementById('confirmarNao').addEventListener('click', () => {
         document.body.removeChild(modal);
     });
-}
-
-// Função para excluir produto (chamada ao backend)
-function excluirProduto(id) {
-    fetch('/crudmvc_mm-main/Excluir', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `id=${id}`
-    })
-        .then(response => {
-            if (!response.ok) throw new Error('Erro ao excluir produto');
-            return response.text();
-        })
-        .then(() => {
-            alert('Produto excluído com sucesso!');
-            // Remove linha da tabela visualmente:
-            const linha = document.querySelector(`.excluir[data-id="${id}"]`)?.closest("tr");
-            if (linha) linha.remove();
-        })
-        .catch(error => {
-            alert('Erro ao excluir produto: ' + error.message);
-            console.error(error);
-        });
 }

@@ -53,7 +53,6 @@ namespace smartCampos.Models
             return produtos;
         }
 
-
         public void CadastroProduto(objProduto produto)
         {
             string query = @"INSERT INTO tb_produto (ds_nome, int_quantidade, dt_validade, dt_cadastro, dm_valor, ds_observacao, id_categoria) 
@@ -71,7 +70,11 @@ namespace smartCampos.Models
                         command.Parameters.Add("@quantidade", SqlDbType.Int).Value = produto.quantidadeEstoque;
                         command.Parameters.Add("@validade", SqlDbType.DateTime).Value = produto.dta_validade;
                         command.Parameters.Add("@cadastro", SqlDbType.DateTime).Value = produto.dta_cadastro;
-                        command.Parameters.Add("@valor", SqlDbType.Decimal).Value = produto.preco;
+                        var paramValor = command.Parameters.Add("@valor", SqlDbType.Decimal);
+                        paramValor.Precision = 15;
+                        paramValor.Scale = 2;
+                        paramValor.Value = produto.preco;
+
                         command.Parameters.Add("@observacao", SqlDbType.NVarChar, 500).Value = produto.descricao ?? (object)DBNull.Value;
                         command.Parameters.Add("@idCategoria", SqlDbType.Int).Value = produto.idCategoria;
 
@@ -87,15 +90,14 @@ namespace smartCampos.Models
 
         public void AtualizarProduto(objProduto produto)
         {
-            string query = @"UPDATE tb_produto
-                     SET ds_nome = @nomeProduto,
-                         int_quantidade = @quantidade,
-                         dt_validade = @validade,
-                         dt_cadastro = @cadastro,
-                         dm_valor = @valor,
-                         ds_observacao = @observacao,
-                         id_categoria = @idCategoria
-                     WHERE id_produto = @idProduto";
+            string query = @"UPDATE tb_produto SET ds_nome = @nomeProduto,
+                             int_quantidade = @quantidade,
+                             dt_validade = @validade,
+                             dt_cadastro = @cadastro,
+                             dm_valor = @valor,
+                             ds_observacao = @observacao,
+                             id_categoria = @idCategoria
+                             WHERE id_produto = @idProduto";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

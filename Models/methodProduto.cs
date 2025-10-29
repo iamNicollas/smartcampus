@@ -10,7 +10,7 @@ namespace smartCampos.Models
 {
     public class methodProduto
     {
-        private string connectionString = @"Data Source=NII\MSSQLSERVER01;Initial Catalog=smartcampus;User ID=nicollas;Password=lala1219";
+        private string connectionString = @"Data Source=LAPTOP-HU2QITS1\SQLEXPRESS;Initial Catalog=smartcampus;Integrated Security=True";
 
         public List<objProduto> ListarProduto()
         {

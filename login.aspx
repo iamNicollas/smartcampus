@@ -13,22 +13,19 @@
     <div class="login-card">
         <h1>Login</h1>
 
-        <form action="/login" method="post">
+        <form id="form" runat="server">
             <label for="Email">Email:</label>
-            <input type="text" id="Email" name="Email" placeholder="Digite o seu email" required>
+            <asp:TextBox runat="server"  TextMode="Email" ID="txtEmail" required="required" placeholder="Digite o seu email" CssId="Email"></asp:TextBox>
 
             <label for="Senha">Senha:</label>
-            <input type="password" id="Senha" name="Senha" placeholder="Digite sua senha" required>
-
+            <asp:TextBox runat="server"  ID="txtSenha" required="required" TextMode="Password" placeholder="Digite sua senha" CssId="Senha"></asp:TextBox>
             <a href="#" class="esqueceu">Esqueceu a senha?</a>
 
-            <!-- Botão com ícone -->
-            <button type="submit" class="btn-login">
-                Login
-                <span class="icone">&#10003;</span>
-            </button>
+            <!-- Botão com ícone -->  
+            <asp:Button ID="btnLogin" OnClick="btnLogin_Click" runat="server" Text="Login" CssClass="btn-login" />
+            <%--<span class="icone">&#10003;</span>--%>
         </form>
-
+        
         <p class="cadastro-texto">
             Não tem uma conta? <a href="/Cadastre-se">cadastre-se</a>
         </p>

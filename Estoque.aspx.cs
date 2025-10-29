@@ -12,6 +12,7 @@ namespace smartCampos
     public partial class Estoque : System.Web.UI.Page
     {
         methodProduto method = new methodProduto();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -22,8 +23,8 @@ namespace smartCampos
 
         private void CarregarProdutos()
         {
+            
             List<objProduto> listaProdutos = method.ListarProduto();
-
             if (listaProdutos != null && listaProdutos.Count > 0)
             {
                 grd.DataSource = listaProdutos;
@@ -33,6 +34,17 @@ namespace smartCampos
             {
                 grd.DataSource = null;
                 grd.DataBind();
+            }
+        }
+
+        protected void btnExcluir_Click(object sender, EventArgs e)
+        {
+            int idProduto;
+            if (int.TryParse(hdnProdutoID.Value, out idProduto))
+            {
+                method.ExcluirProduto(idProduto);
+
+                CarregarProdutos();
             }
         }
     }

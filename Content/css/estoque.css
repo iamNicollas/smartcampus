@@ -1,13 +1,16 @@
 @import url('./style.css');
 
 #container-estoque {
-    height: 75vh;
+    height: 90vh;
     width: inherit;
-    border-radius: 50px;
+    border-radius: 20px;
     padding: 20px;
     margin-top: 20px;
     box-shadow: var(--sombra);
     background-color: var(--card);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 #filtro-estoque {
@@ -71,6 +74,7 @@ table {
     font-size: 23px;
     text-align: center;
     border-collapse: collapse;
+    overflow-y: auto;
 }
 
 thead {
@@ -135,3 +139,6 @@ table > tbody > tr {
         cursor: pointer;
         border-radius: 10px;
     }
+
+
+/* --- parte do modal --- */

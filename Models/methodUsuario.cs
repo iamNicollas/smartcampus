@@ -12,7 +12,7 @@ namespace smartCampos.Models
     {
         private string connectionString = @"Data Source=LAPTOP-HU2QITS1\SQLEXPRESS;Initial Catalog=smartcampus;Integrated Security=True";
 
-        public async Task<List<objUsuario>> BuscarTodosUsuario()
+        public List<objUsuario> BuscarTodosUsuario()
         {
             List<objUsuario> usuarios = new List<objUsuario>();
 
@@ -32,9 +32,9 @@ namespace smartCampos.Models
                                 idUsuario = Convert.ToInt32(reader["id_Usuario"]),
                                 Nome = reader["ds_Nome"].ToString(),
                                 CPF = reader["ds_CPF"].ToString(),
-                                Login = reader["ds_Email"].ToString(),
-                                Senha = reader["ds_Login"].ToString(),
-                                Email = reader["ds_Senha"].ToString(),
+                                Login = reader["ds_Login"].ToString(),
+                                Senha = reader["ds_Senha"].ToString(),
+                                Email = reader["ds_Email"].ToString(),
                                 dta_Cadastro = Convert.ToDateTime(reader["dt_Cadastro"])
                             };
 

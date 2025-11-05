@@ -15,7 +15,7 @@ namespace smartCampos
 
         }
 
-        protected async void btnLogin_Click(object sender, EventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
             if(string.IsNullOrEmpty(txtEmail.Text))
             {
@@ -30,9 +30,16 @@ namespace smartCampos
             }
 
             methodUsuario met = new methodUsuario();
-            var usuarios = await met.BuscarTodosUsuario();
+            var usuarios = met.BuscarTodosUsuario();
 
-            if(usuarios.Select(it => it.Nome).Where(nome => nome == txtEmail.Text.ToString()))
+            var usuarioLogado = usuarios.Where(it => it.Email == txtEmail.Text && it.Senha == txtSenha.Text).FirstOrDefault();
+            if(usuarioLogado != null)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Login efetuado com sucesso!');", true);
+                Response.Redirect("Home.aspx");
+                return;
+            }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Email ou Senha incorretas, tente novamente!');", true);
         }
     }
 }

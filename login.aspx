@@ -22,7 +22,7 @@
             <a href="#" class="esqueceu">Esqueceu a senha?</a>
 
             <!-- Botão com ícone -->  
-            <asp:Button ID="btnLogin" OnClick="btnLogin_Click" runat="server" Text="Login" CssClass="btn-login" />
+            <asp:Button ID="btnLogin" onclick="btnLogin_Click" runat="server" Text="Login" CssClass="btn-login" />
             <%--<span class="icone">&#10003;</span>--%>
         </form>
         

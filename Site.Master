@@ -41,6 +41,12 @@
                                 <img src="../Content/img/icons/Estoque.png" alt="Estoque">ESTOQUE
                             </a>
                         </li>
+
+                        <li class='<%= Request.Url.AbsolutePath.Equals(ResolveUrl("~/Usuario")) ? "active" : "" %>'>
+                            <a href="Usuario.aspx">
+                                <img src="../Content/img/icons/logo-usuário.png" alt="Usuario">USUÁRIO
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

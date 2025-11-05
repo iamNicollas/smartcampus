@@ -67,6 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\usuario.css" />
+    <Content Include="Content\js\MascaraCPF.js" />
+    <Content Include="Usuario.aspx" />
     <Content Include="Cadastro.aspx" />
     <Content Include="Content\css\cadastro.css" />
     <Content Include="Content\css\estoque.css" />
@@ -91,6 +94,7 @@
     <Content Include="Content\img\icons\edit-3.png" />
     <Content Include="Content\img\icons\Estoque.png" />
     <Content Include="Content\img\icons\Home.png" />
+    <Content Include="Content\img\icons\logo-usuário.png" />
     <Content Include="Content\img\icons\opcoes.png" />
     <Content Include="Content\img\icons\search.png" />
     <Content Include="Content\img\icons\trash-2.png" />
@@ -104,6 +108,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrossCutting\Utils\ValidaCPF.cs" />
+    <Compile Include="Usuario.aspx.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuario.aspx.designer.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

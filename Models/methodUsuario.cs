@@ -84,8 +84,7 @@ namespace smartCampos.Models
                          ds_CPF = @cpf,
                          ds_Email = @email,
                          ds_Login = @login,
-                         ds_Senha = @senha,
-                         dt_Cadastro = @dtCadastro
+                         ds_Senha = @senha
                      WHERE id_Usuario = @idUsuario";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -101,7 +100,6 @@ namespace smartCampos.Models
                         command.Parameters.Add("@email", SqlDbType.NVarChar, 100).Value = usuario.Email;
                         command.Parameters.Add("@login", SqlDbType.NVarChar, 100).Value = usuario.Login;
                         command.Parameters.Add("@senha", SqlDbType.NVarChar, 500).Value = usuario.Senha;
-                        command.Parameters.Add("@dtCadastro", SqlDbType.DateTime).Value = usuario.dta_Cadastro;
                         command.Parameters.Add("@idUsuario", SqlDbType.Int).Value = usuario.idUsuario;
 
                         command.ExecuteNonQuery();

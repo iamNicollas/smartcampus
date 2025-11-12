@@ -11,6 +11,7 @@ function inicializarEventosTabela() {
         const modal = tr.querySelector(".reaction-modal");
         const btnEditar = tr.querySelector(".editar");
         const btnExcluir = tr.querySelector(".excluir");
+        const btnExcluirUsuario = tr.querySelector(".excluirUsuario");
 
         // Ajusta IDs e atributos dos modais e botões
         if (modal) {
@@ -49,6 +50,12 @@ function inicializarEventosTabela() {
                 mostrarModalConfirmacao();
             });
         }
+        // Botão Excluir
+        if (btnExcluirUsuario) {
+            btnExcluirUsuario.addEventListener("click", () => {
+                mostrarModalConfirmacaoUsuario();
+            });
+        }
     });
 }
 
@@ -66,6 +73,28 @@ function mostrarModalConfirmacao(idProduto) {
 
     document.getElementById('confirmarSim').addEventListener('click', () => {
         excluirProduto(idProduto);
+        document.body.removeChild(modal);
+    });
+
+    document.getElementById('confirmarNao').addEventListener('click', () => {
+        document.body.removeChild(modal);
+    });
+}
+
+function mostrarModalConfirmacaoUsuario(idUsuario) {
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    modal.innerHTML = `
+        <div class="modal-content">
+            <p>Tem certeza que deseja excluir esse usúario?</p>
+            <button id="confirmarSim">Sim</button>
+            <button id="confirmarNao">Não</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    document.getElementById('confirmarSim').addEventListener('click', () => {
+        excluirProduto(idUsuario);
         document.body.removeChild(modal);
     });
 

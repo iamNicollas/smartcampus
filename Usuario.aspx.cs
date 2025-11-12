@@ -25,6 +25,13 @@ namespace smartCampos
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             LimparCampos();
+            ControleButoes(true);
+        }
+
+        private void ControleButoes(bool estado)
+        {
+            btnEditar.Visible = !estado;
+            btnCadastro.Visible = estado;
         }
 
         protected void btnCadastro_Click(object sender, EventArgs e)
@@ -49,6 +56,7 @@ namespace smartCampos
 
                 LimparCampos();
                 CarregarUsuario();
+                ControleButoes(true);
 
             }
             catch (Exception ex)
@@ -71,8 +79,21 @@ namespace smartCampos
         {
             try
             {
-               
+                objUsuario usuario = new objUsuario
+                {
+                    Nome = txtNome.Text,
+                    CPF = txtCPF.Text,
+                    Login = txtLogin.Text,
+                    Senha = txtSenha.Text,
+                    Email = txtEmail.Text
+                };
 
+                methodUsuario met = new methodUsuario();
+                met.AtualizarUsuario(usuario);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Usuario editado com sucesso!');", true);
+
+                LimparCampos();
+                CarregarUsuario();
 
             }
             catch (Exception ex)
@@ -114,6 +135,43 @@ namespace smartCampos
             else
             {
                 Response.Write("<script>alert('CPF válido!');</script>");
+            }
+        }
+
+        protected void btnExcluir_Click(object sender, EventArgs e)
+        {
+            int idUsuario;
+            if (int.TryParse(hdnUsuarioID.Value, out idUsuario))
+            {
+                method.ExcluirCliente(idUsuario);
+
+                CarregarUsuario();
+            }
+        }
+
+        protected void btnEditarUsuario_Click(object sender, EventArgs e)
+        {
+            System.Web.UI.WebControls.Button btn = (System.Web.UI.WebControls.Button)sender;
+            int idDoUsuario = Convert.ToInt32(btn.CommandArgument);
+            CarregarUsuario(idDoUsuario);
+        }
+        private void CarregarUsuario(int id)
+        {
+            methodProduto methodProduto = new methodProduto();
+
+            List<objUsuario> listaUsuario = method.BuscarTodosUsuario();
+            objUsuario usuario = listaUsuario.Where(it => it.idUsuario == id).FirstOrDefault();
+
+            if (listaUsuario.Any())
+            {
+                txtNome.Text = usuario.Nome;
+                txtCPF.Text = usuario.CPF;
+                txtEmail.Text = usuario.Email;
+                txtLogin.Text = usuario.Login;
+                txtSenha.Attributes.Add("value", usuario.Senha);
+                txtSenha.TextMode = System.Web.UI.WebControls.TextBoxMode.SingleLine;
+
+                ControleButoes(false);
             }
         }
     }
